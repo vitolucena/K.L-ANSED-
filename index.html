@@ -1,0 +1,175 @@
+from flask import Flask, render_template_string
+
+app = Flask(__name__)
+
+# HTML com CSS embutido
+HTML_CONTENT = '''
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.L ANSED - Chinelos de Qualidade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .hero {
+            background-color: #ff9800;
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à K.L ANSED!</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">Sobre</a>
+            <a href="/products">Produtos</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h2>Chinelos de alta qualidade para você!</h2>
+        <p>Explore nossos modelos exclusivos para homens e mulheres.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 K.L ANSED - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+'''
+
+# Página Home
+@app.route('/')
+def home():
+    return render_template_string(HTML_CONTENT)
+
+# Página Sobre
+ABOUT_CONTENT = '''
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - K.L ANSED</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f8f8; }
+        header { background-color: #333; color: white; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        footer { text-align: center; padding: 20px; background-color: #333; color: white; }
+        section { margin: 20px; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sobre a K.L ANSED</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">Sobre</a>
+            <a href="/products">Produtos</a>
+        </nav>
+    </header>
+    
+    <section>
+        <h2>A nossa história</h2>
+        <p>A K.L ANSED é especializada em chinelos confortáveis e estilosos para todas as ocasiões.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 K.L ANSED - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+'''
+
+# Página de Sobre
+@app.route('/about')
+def about():
+    return render_template_string(ABOUT_CONTENT)
+
+# Página de Produtos
+PRODUCTS_CONTENT = '''
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - K.L ANSED</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f8f8; }
+        header { background-color: #333; color: white; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        footer { text-align: center; padding: 20px; background-color: #333; color: white; }
+        section { margin: 20px; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Produtos - K.L ANSED</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">Sobre</a>
+            <a href="/products">Produtos</a>
+        </nav>
+    </header>
+    
+    <section>
+        <h2>Modelos disponíveis</h2>
+        <ul>
+            <li>Chinelo Tradicional Masculino</li>
+            <li>Chinelo Slim Feminino</li>
+            <li>Chinelo Tradicional Feminino</li>
+        </ul>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 K.L ANSED - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+'''
+
+# Página de Produtos
+@app.route('/products')
+def products():
+    return render_template_string(PRODUCTS_CONTENT)
+
+# Rodando o servidor
+if __name__ == '__main__':
+    app.run(debug=True)
